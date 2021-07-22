@@ -22,4 +22,7 @@ htmlcov
 
 # secrets
 config.py
-test-config.py
+test_config.py
+
+# telethone sessions
+*.session
