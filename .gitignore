@@ -1,0 +1,17 @@
+# Virtual environment
+.venv
+
+# Mac OS files
+.DS_Store
+
+# IDE
+.idea
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov
+
+# secrets
+config.py
+test-config.py
