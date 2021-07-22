@@ -1,6 +1,9 @@
 # Virtual environment
 .venv
 
+# Builds
+/dist
+
 # Mac OS files
 .DS_Store
 
