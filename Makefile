@@ -14,4 +14,4 @@ coverage:
 
 install:
 	poetry build
-	pip3 install --force-reinstall dist/geese-bot-0.1.0-py3-none-any.whl
+	pip3 install --force-reinstall dist/Geeses_s_telegram_bot-0.1.0-py3-none-any.whl
