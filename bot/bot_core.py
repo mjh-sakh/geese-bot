@@ -46,9 +46,11 @@ async def message_handler(db_conn, event):
         cur = db_conn.cursor()
         cur.execute("""
                     SELECT name, COUNT(message) 
-                    FROM messages JOIN users ON messages.sender_id = users.sender_id 
+                    FROM messages JOIN users ON messages.sender_id = users.sender_id
+                    WHERE chat_id = %s
                     GROUP BY name
-                    """)
+                    """,
+                    (chat_id,))
         data = cur.fetchall()
         cur.close()
         await event.reply(f'{data}')
