@@ -41,3 +41,14 @@ async def message_handler(db_conn, event):
 
     if text.lower() == 'hello':
         await event.reply('Hi!')
+
+    if text.lower() == r'\activity':
+        cur = db_conn.cursor()
+        cur.execute("""
+                    SELECT name, COUNT(message) 
+                    FROM messages JOIN users ON messages.sender_id = users.sender_id 
+                    GROUP BY name
+                    """)
+        data = cur.fetchall()
+        cur.close()
+        await event.reply(f'{data}')
