@@ -1,0 +1,31 @@
+# create messages table
+
+CREATE TABLE "messages" (
+  "id" serial NOT NULL,
+  PRIMARY KEY ("id"),
+  "sender_id" integer NOT NULL,
+  "message" text NOT NULL,
+  "date" timestamp NOT NULL,
+  "chat_id" integer NOT NULL
+);
+
+
+# insert user
+
+INSERT INTO "users" ("sender_id", "name")
+VALUES (%s, %s)
+ON CONFLICT DO NOTHING;
+
+# insert message
+
+INSERT INTO messages (sender_id, chat_id, message, date)
+VALUES (%s, %s, %s, %s);
+
+
+# get stats
+SELECT sender_id,
+       SUM(LENGTH(message)) AS typed,
+       count(message) AS count
+FROM messages
+GROUP BY sender_id
+ORDER BY typed desc;

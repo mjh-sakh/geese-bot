@@ -11,7 +11,7 @@ from bot.config import BOT_CONFIG
 
 
 def run():
-    conn = psycopg2.connect("dbname=geese_bot user=goose")
+    conn = psycopg2.connect(BOT_CONFIG.db_connect_string, dbname=BOT_CONFIG.db_name)
     bot = TelegramClient(BOT_CONFIG.session, BOT_CONFIG.api_id, BOT_CONFIG.api_hash)
     message_handler_with_db = partial(message_handler, conn)
     bot.on(events.NewMessage)(message_handler_with_db)
